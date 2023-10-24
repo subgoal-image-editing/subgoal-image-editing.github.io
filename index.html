@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/susie/favicon.svg">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="SuSIE: Subgoal Synthesis via Image Editing">
+	<meta name="twitter:image" content="https://rail-berkeley.github.io/susie/teaser.png">
+
+	<title>SuSIE: Subgoal Synthesis via Image Editing</title>
+	
+		<link href="./_app/immutable/assets/0.d663b3d5.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.53c93383.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.56bbc6da.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.8bb5e903.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.5bbd4da3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.497bfeac.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.fc666aa7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.0254820f.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.59e584e2.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.8b6b5da5.js">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C9WH0FPY6M"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag('js', new Date());
+
+	gtag('config', 'G-C9WH0FPY6M');
+</script>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">  <div class="flex w-full justify-center mb-96"><div class="max-w-4xl w-full px-4 pt-12"><h1 class="font-bold text-4xl text-center mb-8"><span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span>: Subgoal Synthesis via Image Editing</h1>    <p class="mt-4"><span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> makes generalizable robotic manipulation as easy as finetuning an open-source image-editing
+			model, such as
+			<a href="https://www.timothybrooks.com/instruct-pix2pix" data-svelte-h="svelte-ywihwr">InstructPix2Pix</a>. Given an image
+			and a language command, <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> executes the command by &quot;editing&quot; the image into a meaningful
+			subgoal and then achieving that subgoal using a low-level goal-reaching policy. Much like a person
+			first constructs a high-level plan to complete a task before deferring to muscle memory for the
+			low-level control,
+			<span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> first leverages a simple image-generative model for visuo-semantic reasoning before deferring
+			to a low-level policy to determine precise motor actuations.</p> <p class="mt-4">We find that this recipe enables significantly higher generalization and precision than
+			conventional language-conditioned policies. <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> achieves state-of-the-art results on the
+			simulated <a href="http://calvin.cs.uni-freiburg.de/" data-svelte-h="svelte-ospi94">CALVIN benchmark</a>, and also
+			demonstrates robust performance on real-world manipulation tasks, beating
+			<a href="https://robotics-transformer-x.github.io/" data-svelte-h="svelte-iugbof">RT-2-X</a> as well as an oracle policy that
+			gets access to ground-truth goal images.</p>  <div class="flex flex-col items-center mt-8 w-full"><div class="w-full lg:w-10/12" data-svelte-h="svelte-8e8sji"><img src="/susie/teaser.svg" alt="teaser"></div> <p class="italic mt-4"><span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> alternates generating subgoals using an image-editing diffusion model and executing
+				those subgoals using a language-agnostic low-level policy.</p></div> <div class="mt-8"><h2 class="text-2xl" data-svelte-h="svelte-bs3nq3">Zero-Shot Manipulation</h2> <div class="flex flex-col items-center mt-8 mb-4 w-full" data-svelte-h="svelte-1ijcggc"><div class="w-full lg:w-10/12"><img src="/susie/scenes_combined.svg" class="w-full" alt="teaser"></div></div> <p><span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> demonstrates state-of-the-art performance in the zero-shot setting of the CALVIN benchmark,
+				where the policy is trained on 3 environments (A, B, and C) and tested on a fourth. <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> also shows incredibly strong performance in the real world. Scene C is situated on top of
+				a table with a tiled surface, which is unlike anything seen in the training data, and requires
+				manipulating 4 objects, 3 of which are unseen in the data. This means that the robot must identify
+				the novel objects from the language instruction alone while ignoring its affinity for the object
+				that is heavily represented in its training data. <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> outperforms all of the baseline methods
+				in all of the scenes, including
+				<a href="https://robotics-transformer-x.github.io/" data-svelte-h="svelte-iugbof">RT-2-X</a>, which is a 55 billion
+				parameter vision-language-action model trained on a 20x larger superset of <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span>&#39;s robot
+				training data.</p> <div class="ml-4 mt-2"></div></div> <div class="mt-2"><div class="ml-4"></div></div> <div class="mt-8"><h2 class="text-2xl" data-svelte-h="svelte-1v4xsrf">Enhanced Precision</h2> <p class="mt-2">We were surprised to find that <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> did not just help with zero-shot generalization, but also
+	seemed to help significantly with low-level precision. To put this to the test, we evaluated an
+	<b data-svelte-h="svelte-4to6g7">Oracle GCBC</b> baseline, where we trained a goal-conditioned policy to reach any state in a
+	trajectory and then provided that policy with <i data-svelte-h="svelte-15crwdl">ground-truth</i> goal images at test time. Unlike <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span>, this method does not need to interpret the language instruction or otherwise do any semantic
+	reasoning. It uses the exact same policy architecture and hyperparameters as the low-level policy
+	in <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span>, meaning any remaining advantage from <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> must come from the way it breaks down
+	the task hierarchically.</p> <p class="mt-2">Quantitatively, Oracle GCBC is one of the strongest baselines. However, it is still outperformed
+	by <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> on average, and fails to precisely manipulate objects in many scenarios where <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> succeeds. For instance, <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> is the only method that can consistently grasp the yellow bell
+	pepper, which is light, smooth, and almost as wide as the gripper. In &quot;put the marker on the towel,&quot;
+	observe how the low-level policy cannot grasp the marker until <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> proposes a subgoal that clearly
+	demonstrates the correct grasp height. In &quot;put the coffee creamer on the plate,&quot; watch as both methods
+	make the same mistake (early dropping); however, <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> easily gets back on track thanks to subgoal
+	guidance.</p> <div class="mt-2 ml-4"> <div class="mt-2"></div>  </div></div> <div class="mt-8"><h2 class="text-2xl" data-svelte-h="svelte-1rodxpc">Leveraging Video Data</h2> <p class="mt-2">Since the image-editing model in <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> does not require robot actions, it can leverage broad video
+	for even greater zero-shot generalization. In addition to the robot demonstrations in
+	<a href="https://rail-berkeley.github.io/bridgedata/" data-svelte-h="svelte-1ht5q84">BridgeData</a>, we also trained <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> on
+	the
+	<a href="https://developer.qualcomm.com/software/ai-datasets/something-something" data-svelte-h="svelte-1j448k0">Something-Something</a>
+	dataset, which contains 220,847 labeled video clips of humans manipulating various objects. Here, we
+	present an ablation showing that the video data does indeed help, especially in the zero-shot setting.
+	We hope that future work will explore scaling up <span class="text-pink-500" data-svelte-h="svelte-12y4y30">SuSIE</span> to even larger and broader video datasets.</p> <div class="mt-2 ml-4"> <div class="mt-2"></div>  </div></div></div> </div> 
+			
+			<script>
+				{
+					__sveltekit_txwf24 = {
+						assets: "/susie",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.56bbc6da.js"),
+						import("./_app/immutable/entry/app.fc666aa7.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+
+</html>
